@@ -1,0 +1,22 @@
+{
+  "name": "resend-client-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A self-hosted, multi-tenant email client for Resend — built on Cloudflare Workers, D1, R2, and Workers AI.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm --parallel -r dev",
+    "dev:worker": "pnpm --filter worker dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build": "pnpm --filter frontend run build",
+    "deploy": "pnpm run build && pnpm --filter worker run deploy",
+    "db:apply": "pnpm --filter worker db:apply",
+    "db:apply:remote": "pnpm --filter worker db:apply:remote",
+    "types": "pnpm --filter worker types",
+    "setup": "node scripts/setup-secrets.mjs"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}

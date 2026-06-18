@@ -1,0 +1,7 @@
+packages:
+  - 'worker'
+  - 'frontend'
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true

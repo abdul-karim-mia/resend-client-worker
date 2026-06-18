@@ -1,0 +1,33 @@
+{
+  "name": "resend-client-worker",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "frontend/dist",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "resend-client-db",
+      "database_id": "195fdc0e-74f9-415a-9d85-86ee3e8b9cd7"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "resend-client-attachments","preview_bucket_name": "resend-client-attachments"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {
+    "ENVIRONMENT": "production"
+  },
+  "dev": {
+    "port": 8787,
+    "local_protocol": "http"
+  }
+}

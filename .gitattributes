@@ -1,0 +1,16 @@
+# Normalize line endings to LF in the repo
+* text=auto eol=lf
+
+# Binary files — no CRLF conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.woff2 binary
+*.woff binary
+*.ttf binary
+
+# Lock files — treat as binary to avoid merge noise
+pnpm-lock.yaml binary

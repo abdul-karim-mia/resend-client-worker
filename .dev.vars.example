@@ -1,0 +1,22 @@
+# Worker Local Dev Secrets
+# Run `node scripts/setup-secrets.mjs` to generate all values automatically.
+# This file is safe to commit — .dev.vars (without .example) is gitignored.
+
+# AES-256 key for encrypting Resend API keys in D1
+# Generate: openssl rand -hex 32
+MASTER_ENCRYPTION_KEY=your-64-char-hex-key-here
+
+# Random string for signing JWT session tokens
+# Generate: openssl rand -hex 48
+JWT_SECRET=your-96-char-random-string-here
+
+# Admin login credentials
+ADMIN_USERNAME=admin
+
+# SHA-256 hash of your admin password (NOT bcrypt)
+# Generate: node scripts/setup-secrets.mjs  →  copy ADMIN_PASSWORD_HASH value
+# Or: node -e "const {createHash}=require('crypto'); console.log(createHash('sha256').update('YOUR_PASS').digest('hex'))"
+ADMIN_PASSWORD_HASH=your-sha256-hash-here
+
+# Development flag (do not change)
+ENVIRONMENT=development

@@ -1,0 +1,69 @@
+{
+  "name": "resend-client",
+  "description": "Self-hosted multi-tenant email client built on Cloudflare Workers, D1, R2, and Workers AI.",
+  "repository": "https://github.com/abdul-karim-mia/resend-client",
+  "main": "worker/src/index.ts",
+  "workers_dev": true,
+  "build": {
+    "command": "cd frontend && npm install && npm run build"
+  },
+  "bindings": [
+    {
+      "type": "d1",
+      "name": "DB",
+      "title": "Email Database (D1)",
+      "description": "Select an existing D1 database or create a new one. The schema is created automatically on first request.",
+      "suggestions": [
+        {
+          "action": "create",
+          "title": "Create new: resend-client-db"
+        }
+      ]
+    },
+    {
+      "type": "r2",
+      "name": "R2",
+      "title": "Attachment Storage (R2)",
+      "description": "Select an existing R2 bucket or create a new one to store email attachments.",
+      "suggestions": [
+        {
+          "action": "create",
+          "title": "Create new: resend-client-attachments"
+        }
+      ]
+    },
+    {
+      "type": "ai",
+      "name": "AI",
+      "title": "Workers AI",
+      "description": "Cloudflare Workers AI is used for draft replies, thread summaries, and auto-reply. No configuration needed — it is automatically enabled."
+    }
+  ],
+  "secrets": [
+    {
+      "name": "MASTER_ENCRYPTION_KEY",
+      "title": "Master Encryption Key",
+      "description": "64-char hex string used to AES-256 encrypt your Resend API keys at rest. Generate with: node scripts/setup-secrets.mjs",
+      "required": true
+    },
+    {
+      "name": "JWT_SECRET",
+      "title": "JWT Secret",
+      "description": "Random string used to sign session tokens. Generate with: node scripts/setup-secrets.mjs",
+      "required": true
+    },
+    {
+      "name": "ADMIN_USERNAME",
+      "title": "Admin Username",
+      "description": "The login username for the admin panel (e.g. 'admin').",
+      "required": true,
+      "default": "admin"
+    },
+    {
+      "name": "ADMIN_PASSWORD_HASH",
+      "title": "Admin Password Hash (SHA-256)",
+      "description": "SHA-256 hex hash of your admin password. Generate with: node scripts/setup-secrets.mjs — then copy the ADMIN_PASSWORD_HASH value.",
+      "required": true
+    }
+  ]
+}
